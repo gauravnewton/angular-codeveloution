@@ -16,6 +16,7 @@ import { Component, OnInit } from '@angular/core';
     <p class="text-danger" [class]="textSuccess" > GIlli Gilli </p>
     <p class="text-success"> GIlli Gilli </p>
     <p [class.text-danger]="isError"> GIlli Gilli </p>
+    <p [ngClass]="classObject"> GIlli Gilli </p>
     
   `,
   styles: [`
@@ -31,6 +32,11 @@ import { Component, OnInit } from '@angular/core';
     .text-danger {
       color:red;
     }
+    
+    .text-special{
+      font-style: italic
+    }
+
   `]
 })
 export class TestComponent implements OnInit {
@@ -42,6 +48,11 @@ bled = false;
   public textDanger = "text-danger";
   public isError = false;
   constructor() { }
+  public classObject = {
+    "text-success" : !this.isError,
+    "text-danger" : this.isError,
+    "text-special" : true
+  }
 
   ngOnInit(): void {
   }
